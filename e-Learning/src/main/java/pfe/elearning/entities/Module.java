@@ -2,12 +2,16 @@ package pfe.elearning.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @SuppressWarnings("serial")
 @Entity
@@ -23,7 +27,7 @@ public class Module implements Serializable{
 	
 	private String description;
 
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.})
 	@JoinColumn(name="id_theme")
 	private Theme theme;
 
@@ -59,10 +63,12 @@ public class Module implements Serializable{
 		this.description = description;
 	}
 
+	@JsonIgnore
 	public Theme getTheme() {
 		return theme;
 	}
 
+	@JsonSetter
 	public void setTheme(Theme theme) {
 		this.theme = theme;
 	}

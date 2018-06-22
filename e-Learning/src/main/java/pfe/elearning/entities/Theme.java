@@ -10,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+
 @SuppressWarnings("serial")
 @Entity
 public class Theme implements Serializable{
@@ -55,9 +58,13 @@ public class Theme implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@JsonIgnore
 	public Collection<Module> getModules() {
 		return modules;
 	}
+	
+	@JsonSetter
 	public void setModules(Collection<Module> modules) {
 		this.modules = modules;
 	}
