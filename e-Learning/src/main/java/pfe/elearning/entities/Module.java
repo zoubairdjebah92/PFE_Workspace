@@ -2,7 +2,6 @@ package pfe.elearning.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +26,7 @@ public class Module implements Serializable{
 	
 	private String description;
 
-	@ManyToOne(cascade = {CascadeType.})
+	@ManyToOne
 	@JoinColumn(name="id_theme")
 	private Theme theme;
 
